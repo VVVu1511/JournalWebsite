@@ -7,7 +7,7 @@ def main():
         choice = int(input('Nhập lựa chọn: '))    
         match choice:
             # Thêm công việc mới
-            case 1:
+            case 1:   
                 pass
             #Xem danh sách công việc
             case 2:
