@@ -1,5 +1,5 @@
 import sqlite3
-
+from flask import Flask
 class TaskManager:
     def __init__(self):
         self.__con = sqlite3.connect('tasks.db')
@@ -40,16 +40,27 @@ class TaskManager:
     def mark_completed(self,select_id: int):
         self.__cur.execute("UPDATE tasks set state = 'Done' where id = (?)",(select_id,))
         self.__con.commit()
-        
-def test():
-    test = TaskManager()
     
-    test.add_values(1,'Testing','25-2-2025','Undone')
-    test.add_values(2,'Solving Math','27-3-2025','Done')
-    test.mark_completed(1)
+    def search_tasks(self,id,description = '',deadline = '',state = ''):
+        return '\n'.join(str(row) for row in self.__cur.execute("""SELECT * 
+                        from tasks
+                        where id = (?) 
+                        and description = (?)
+                        and deadline = (?)
+                        and state = (?)""",(id,description,deadline,state,)
+                        ).fetchall())
+    
+    
+def test():
+    # test = TaskManager()
+    
+    # test.add_values(1,'Testing','25-2-2025','Undone')
+    # test.add_values(2,'Solving Math','27-3-2025','Done')
+    # test.mark_completed(1)
     # test.update_value(1,"deadline","25-5-2025")
     #test.remove_values([1,2])
-    print(test)
+    # print(test)
+    print('Hello World!')
 
 
 if __name__ == '__main__':
