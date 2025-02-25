@@ -1,5 +1,6 @@
 import sqlite3
 from flask import Flask
+
 class TaskManager:
     def __init__(self):
         self.__con = sqlite3.connect('tasks.db')
@@ -21,11 +22,11 @@ class TaskManager:
         )""")
         self.__con.commit()
         
-    def add_values(self,id = 0,description = '',deadline = '',state = ''):    
+    def add_values(self,json_data):    
         self.__cur.execute("""
         INSERT INTO tasks 
         values (?,?,?,?)    
-    """,(id,description,deadline,state))
+    """,(id,json_data["description"],json_data["deadline"],json_data["state"]))
         self.__con.commit()
 
     def remove_values(self,id_list: list):
@@ -51,17 +52,3 @@ class TaskManager:
                         ).fetchall())
     
     
-def test():
-    # test = TaskManager()
-    
-    # test.add_values(1,'Testing','25-2-2025','Undone')
-    # test.add_values(2,'Solving Math','27-3-2025','Done')
-    # test.mark_completed(1)
-    # test.update_value(1,"deadline","25-5-2025")
-    #test.remove_values([1,2])
-    # print(test)
-    print('Hello World!')
-
-
-if __name__ == '__main__':
-    test()
