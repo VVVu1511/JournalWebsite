@@ -1,0 +1,15 @@
+
+.task_bar > ul{
+    display: flex;
+    list-style: none;
+}
+.task_bar > ul > li{
+    padding: 10px;
+    color: white;
+    background-color: black;
+    cursor: pointer;
+}
+
+.task_bar > ul > li:hover{
+    background-color: gray;
+}

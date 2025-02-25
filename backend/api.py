@@ -10,7 +10,7 @@ class API:
         self.__app.add_url_rule('/add_task','add_task',self.add_task,methods = ['POST'])
     
     def get_list(self):
-        return self.__task_manager.__str__()
+        return 'Hello World'
 
     def add_task(self):
         self.__task_manager.add_values(request.json['description'],request.json['deadline'],request.json['state'])
