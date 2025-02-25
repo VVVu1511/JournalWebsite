@@ -1,5 +1,5 @@
 import time
-from apps.backend.api import API
+from api import API
 
 
 def main():

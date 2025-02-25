@@ -1,6 +1,5 @@
 from flask import Flask,jsonify,request
-from apps.backend.models.database import TaskManager
-
+from models.database import TaskManager
 class API:
     def __init__(self):
         self.__app = Flask(__name__)
