@@ -1,6 +1,9 @@
 <p>
     <a href = "{% url 'journal_web:index' %}">Journal</a>
     <a href = "{% url 'journal_web:topics' %}">Topics</a>
+    {% if topic %}
+        <a href="{% url 'journal_web:topic' topic_id=topic.id %}">Topic</a>
+    {% endif %}
 </p>
 
 {% block content %}{% endblock content %}
