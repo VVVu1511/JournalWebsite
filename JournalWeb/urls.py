@@ -21,3 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('journal_web.urls', namespace='journal_web')),
 ]
+
+
