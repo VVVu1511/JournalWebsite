@@ -4,6 +4,10 @@
     {% if topic %}
         <a href="{% url 'journal_web:topic' topic_id=topic.id %}">Topic</a>
     {% endif %}
+    
+    {% if topic %}
+    <a href = "{% url 'journal_web:new_entry' topic_id=topic.id %}">Entry</a>
+    {% endif %}
 </p>
 
 {% block content %}{% endblock content %}
