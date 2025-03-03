@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     #my apps
     'journal_web',
+    'users',
     #Default DJANGO apps
     'django.contrib.admin',
     'django.contrib.auth',
