@@ -6,26 +6,27 @@
 
 {% block content %}
 
-<p>Topics: {{ topic }}</p>
-
-<p>Entries</p>
 <p>
     <a href = "{% url 'journal_web:new_entry' topic.id %}">Add a new entry</a>
 </p>   
-<ul>
+
     {% for entry in entries %}
     
-    <li>
-        <p>{{ entry.date_added|date:'M d, Y H:i' }}</p>
-        <p>{{ entry.text|linebreaks }}</p>
-        <p>
-            <a href = "{% url 'journal_web:edit_entry' entry.id %}">Edit entry</a>
-        </p>
-    </li>
+    <div>
+        <h4 class = "card-header">
+            {{ entry.date_added|date:'M d, Y H:i' }}
+            <small>
+                <a href = "{% url 'journal_web:edit_entry' entry.id %}">edit entry</a>
+            </small>
+        </h4>
+        <div class="card-body">
+            {{ entry.text|linebreaks }}
+        </div>
+    </div>
 
     {% empty %}
         <li>There are no entries for this topic yet.</li>
     {% endfor %}
-</ul>
+
 
 {% endblock content %}
