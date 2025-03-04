@@ -35,6 +35,8 @@ INSTALLED_APPS = [
     #my apps
     'journal_web',
     'users',
+    #third_party app
+    'bootstrap4',
     #Default DJANGO apps
     'django.contrib.admin',
     'django.contrib.auth',
