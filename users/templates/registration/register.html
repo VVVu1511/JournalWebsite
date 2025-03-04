@@ -1,0 +1,11 @@
+{% extends "journal_web/base.html" %}
+
+{% block content %}
+
+{% csrf_token %}
+{{ form.as_p }}
+
+<button name="submit">Register</button>
+<input type = "hidden" name="next" value = "{% url 'journal_web:index' %}" />
+
+{% endblock content %}
