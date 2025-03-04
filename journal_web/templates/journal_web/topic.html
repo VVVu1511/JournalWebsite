@@ -1,5 +1,9 @@
 {% extends "journal_web/base.html" %}
 
+{% block page_header %}
+    <h3>{{ topic }}</h3>
+{% endblock page_header %}
+
 {% block content %}
 
 <p>Topics: {{ topic }}</p>
@@ -10,6 +14,7 @@
 </p>   
 <ul>
     {% for entry in entries %}
+    
     <li>
         <p>{{ entry.date_added|date:'M d, Y H:i' }}</p>
         <p>{{ entry.text|linebreaks }}</p>

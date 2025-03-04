@@ -1,31 +1,3 @@
-{% comment %} <p>
-    <a href = "{% url 'journal_web:index' %}">Journal</a>
-    <a href = "{% url 'journal_web:topics' %}">Topics</a>
-    {% if topic %}
-        <a href="{% url 'journal_web:topic' topic_id=topic.id %}">Topic</a>
-    {% endif %}
-    
-    {% if topic %}
-    <a href = "{% url 'journal_web:new_entry' topic_id=topic.id %}">Entry</a>
-    {% endif %}
-
-    {% if user.is_authenticated %}
-        Hello,{{ user.user_name }}
-        
-        <form action="{% url 'users:logout' %}" method="post">
-            {% csrf_token %}
-            <button type="submit">Log out</button>
-        </form>
-        
-    {% else %}
-        <a href = "{% url 'users:register' %}"></a>
-        <a href = "{% url 'users:login' %}">Log In</a>
-    {% endif %}
-</p>
-
-{% block content %}{% endblock content %} {% endcomment %}
-
-
 {% load bootstrap4 %}
 
 <!doctype html>
@@ -55,7 +27,7 @@ aria-expanded="false" aria-label="Toggle navigation">
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'learning_logs:topics'%}">
+                    <a class="nav-link" href="{% url 'journal_web:topics'%}">
                         Topics</a></li>
             </ul>
         <ul class = "navbar-nav ml-auto">
