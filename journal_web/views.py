@@ -1,12 +1,15 @@
 from django.shortcuts import render,redirect
 from .models import Topic, Entry
 from .forms import TopicForm,EntryForm
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 
 def index(request):
     """The home page for Journal Web"""
     return render(request,'journal_web/index.html')
 
+@login_required
 def topics(request):
     """Show alls topics"""
     topics = Topic.objects.order_by('date_added')
@@ -21,6 +24,7 @@ def topic(request,topic_id):
     
     return render(request,'journal_web/topic.html',context) 
 
+@login_required
 def new_topic(request):
     """Add a new topic"""
     if request.method != 'POST':
@@ -34,7 +38,7 @@ def new_topic(request):
     
     return render(request,'journal_web/new_topic.html',context)
 
-
+@login_required
 def new_entry(request,topic_id):
     topic = Topic.objects.get(id=topic_id)
     
@@ -51,6 +55,7 @@ def new_entry(request,topic_id):
     context = {'topic':topic,'form': form}
     return render(request,'journal_web/new_entry.html',context)
 
+@login_required
 def edit_entry(request,entry_id):
     entry = Entry.objects.get(entry_id)
     topic = entry.topic
