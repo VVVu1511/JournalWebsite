@@ -1,22 +1,23 @@
 {% extends "journal_web/base.html" %}
+{% load bootstrap4 %}
 
 {% block page_header %}
-    <h1>Topics</h1>
+    <h1 class = "text-danger text-center fw-bold display-3">TOPICS</h1>
 {% endblock page_header %}
 
 {% block content %}
 
-<p>Topics</p>
-<ul>
+
+<ul class = "list-group mx-auto">
     {% for topic in topics %}
-        <li><h3>
+        <li class = "list-group-item list-group-item-light list-group-item-action text-center shadow-sm"><h4 class = "text-center">
             <a href="{% url 'journal_web:topic' topic_id=topic.id %}">{{ topic.text }}</a>  
-        </h3></li>
+        </h4></li>
     {% empty %}
         <li><h3>No topics have been added yet.</h3></li>
     {% endfor %}
 </ul>
 
-<h3><a href = "{% url 'journal_web:new_topic' %}">Add a new topic</a></h3>
+<div class = "mt-4 d-flex justify-content-center"><a class = "btn btn-primary d-flex justify-content-center" href = "{% url 'journal_web:new_topic' %}">Add a new topic</a></div>
 
 {% endblock content %}
